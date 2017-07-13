@@ -89,7 +89,7 @@ Contributions are welcome
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
 
 ### TODO
-* POST requests
-* Create generators (for config initializer first)
+* Summary file (.md), to show response time for each endpoint and compare with others to track the slowest
+* POST requests handling
+* Create generator for config initializer
 * Add simplecov to permit controller coverage for example
-* Generate documentation page(s) (markdown) to list the results
