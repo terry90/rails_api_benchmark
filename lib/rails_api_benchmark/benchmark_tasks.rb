@@ -13,6 +13,15 @@ module RailsApiBenchmark
 
           at_exit { RailsApiBenchmark::Subprocess.kill_all }
         end
+
+        namespace :benchmark do
+          desc 'Prints RailsApiBenchmark config'
+          task config: :environment do
+            require 'json'
+
+            puts JSON.pretty_generate(RailsApiBenchmark.config.all)
+          end
+        end
       end
     end
   end
