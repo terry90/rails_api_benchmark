@@ -6,6 +6,12 @@ Work in progress, yet you can use it like this.
 
 Run it with rake api:benchmark
 
+## Important
+
+* Only JSON responses are supported yet
+* Only GET requests are supported yet
+* Configuration is not validated
+
 ## Installation
 
 Install gnuplot (Google)
@@ -47,9 +53,11 @@ unless Rails.env.production?
     }
     config.regexps = [ # Used to get results from the output of benchmark tools
       {
+        key: :response_time,
         name: 'Average time per request (ms)',
         regexp: /Time\s+per\s+request:\s+([0-9.]*).*\(mean\)/
       }, {
+        key: :req_per_sec,
         name: 'Requests per second (#)',
         regexp: /Requests\s+per\s+second:\s+([0-9.]*).*\(mean\)/
       }
@@ -82,8 +90,6 @@ The gem is available as open source under the terms of the [MIT License](http://
 
 ### TODO
 * POST requests
-* Create Formatter class to avoid dirty code in Endpoint
-* Create markdown template to embed nicely on github (Mustache)
 * Create generators (for config initializer first)
 * Add simplecov to permit controller coverage for example
 * Generate documentation page(s) (markdown) to list the results

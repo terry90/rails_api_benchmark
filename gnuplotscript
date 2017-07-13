@@ -1,13 +1,14 @@
 #!/usr/bin/gnuplot
 
 if (!exists("plot_title")) plot_title='Benchmark'
+if (!exists("plot_file")) plot_title='timeseries.jpg'
 
 # Let's output to a jpeg file
 set terminal jpeg size 1280,720
 # This sets the aspect ratio of the graph
 set size 1, 1
 # The file we'll write to
-set output "timeseries1.jpg"
+set output plot_file
 # The graph title
 set title plot_title
 # Where to place the legend/key

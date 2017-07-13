@@ -1,8 +1,11 @@
 require 'rails_api_benchmark/logging'
 require 'rails_api_benchmark/server'
 require 'rails_api_benchmark/core'
+require 'rails_api_benchmark/renderer'
+require 'rails_api_benchmark/graph'
 require 'rails_api_benchmark/subprocess'
 require 'rails_api_benchmark/endpoint'
+require 'rails_api_benchmark/views/view' # Requires all the views
 
 module RailsApiBenchmark
   class Config

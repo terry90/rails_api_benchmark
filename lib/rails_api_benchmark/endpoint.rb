@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'json'
+
 module RailsApiBenchmark
   class Endpoint
     include Logging
@@ -11,9 +13,14 @@ module RailsApiBenchmark
       @route = opts[:route]
       @method = opts[:method]
       @title = opts[:title]
-      @response = nil
-      @results = []
+      @results = {}
       @results_folder = "#{RailsApiBenchmark.config.results_folder}/#{@name}"
+    end
+
+    def run_benchmark
+      query
+      benchmark
+      @results
     end
 
     def benchmark
@@ -23,14 +30,14 @@ module RailsApiBenchmark
       output = `#{benchmark_cmd % opts}`
 
       regexps = RailsApiBenchmark.config.regexps
-      regexps.each { |r| @results << output.scan(r[:regexp]) }
+      regexps.each { |r| @results[r[:key]] = output.scan(r[:regexp]).flatten.first }
     end
 
     def query
       curl_cmd = RailsApiBenchmark.config.curl_cmd
       opts = RailsApiBenchmark.config.all.merge(route: @route)
 
-      @response = `#{curl_cmd % opts}`
+      @results[:response] = JSON.pretty_generate(JSON.parse(`#{curl_cmd % opts}`))
     end
 
     private

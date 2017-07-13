@@ -1,0 +1,21 @@
+# {{title}}
+
+### Results
+
+{{#results}}
+Requests per second: {{req_per_sec}} #
+
+Average response time: {{response_time}} ms
+{{/results}}
+
+{{#target}}
+### Graph
+![{{title}}](../{{name}}_plot.jpg?raw=true "{{title}}")
+{{/target}}
+
+### Response
+{{#results}}
+```json
+{{{response}}}
+```
+{{/results}}
