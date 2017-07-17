@@ -1,4 +1,4 @@
-# Benchmark results:
+# Benchmark
 
 **Configuration:**
 - Concurrency: <%= @config.concurrency %>
@@ -6,6 +6,8 @@
 - Host: <%= @config.host %>
 
 ## Endpoints tested (<%= @nb_routes -%>)
+
+[See results summary](summary.md)
 
 <% @routes.each do |r| -%>
 ### <%= r[:title] -%>
