@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rails_api_benchmark (0.2.2)
+    rails_api_benchmark (0.2.3)
       erubis
       rails (~> 5.1.2)
 
