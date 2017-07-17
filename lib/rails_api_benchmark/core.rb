@@ -10,31 +10,37 @@ module RailsApiBenchmark
 
     def initialize
       @config = RailsApiBenchmark.config
+      @resultset = ResultSet.new
+      init_files
+      write_index
     end
 
     def run
-      init_files
       @config.routes.each do |route|
         e = Endpoint.new(route)
         res = e.run_benchmark
-        write_results(e, res)
+        @resultset.add(e, res)
       end
-      create_index
+      @resultset.compute_relative_speed
+      write_results
     end
 
-    def write_results(endpoint, results)
-      Renderer.new(endpoint, results).process
+    private
+
+    def write_results
+      Views::SummaryMarkdown.new(@resultset).write if @config.summary
+
+      @resultset.each_result do |endpoint, results|
+        Renderer.new(endpoint, results).process
+      end
     end
 
     def init_files
       FileUtils.mkdir_p(@config.results_folder)
     end
 
-    def create_index
-      view = Views::IndexMarkdown.new(@config.routes)
-      File.open(File.join(@config.results_folder, view.file_name), 'w') do |file|
-        file << view.render
-      end
+    def write_index
+      Views::IndexMarkdown.new.write
     end
   end
 end

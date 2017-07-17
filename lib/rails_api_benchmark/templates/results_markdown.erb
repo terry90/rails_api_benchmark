@@ -1,0 +1,15 @@
+# {{title}}
+
+### Results
+
+Requests per second: <%= @results[:req_per_sec] %> #
+
+Average response time: <%= @results[:response_time] %> ms
+
+### Graph
+![<%= @target.title %>](../<%= @target.name %>_plot.jpg?raw=true "<%= @target.title %>")
+
+### Response
+```json
+<%= @results[:response] %>
+```

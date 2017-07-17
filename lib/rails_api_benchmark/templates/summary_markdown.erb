@@ -1,0 +1,19 @@
+# Summary:
+
+* Average response time: **<%= @avg[:response_time] -%> ms**
+* Average requests per sec: **<%= @avg[:req_per_sec] -%> #**
+
+|Route|Response time factor|Request per second factor|
+|---|---|---|
+<% @results.sort_by { |v| -v[:factors][:response_time] }.each do |r| -%>
+<%
+  rps = r[:factors][:req_per_sec]
+  rt = r[:factors][:response_time]
+ -%>
+ <%# I don't care about magic string values, it's templating %>
+  <%=
+    "|#{r[:endpoint].title}" \
+    "|#{rt.abs} % #{rt < 0 ? 'faster than average' : 'slower than average'}" \
+    "|#{rps.abs} % #{rps >= 0 ? 'more than average' : 'less than average'}|\n"
+   -%>
+<% end %>

@@ -2,14 +2,14 @@ require 'mustache'
 
 module RailsApiBenchmark
   module Views
-    class IndexMarkdown < View
-      attr_reader :routes, :nb_routes, :config
+    class SummaryMarkdown < View
+      attr_reader :results, :avg
 
-      def initialize
+      def initialize(resultset)
         super
-        @file_name = 'README'
-        @routes = @config.routes
-        @nb_routes = routes.count
+        @file_name = 'summary'
+        @results = resultset.results
+        @avg = resultset.averages
       end
 
       # Maybe put this in a superclass like MarkdownView to DRY

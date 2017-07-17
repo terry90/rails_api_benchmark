@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     rails_api_benchmark (0.2.2)
-      mustache (~> 1.0, >= 0.99.4)
+      erubis
       rails (~> 5.1.2)
 
 GEM
@@ -49,6 +49,7 @@ GEM
     builder (3.2.3)
     concurrent-ruby (1.0.5)
     erubi (1.6.1)
+    erubis (2.7.0)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     i18n (0.8.6)
@@ -62,7 +63,6 @@ GEM
     mime-types-data (3.2016.0521)
     mini_portile2 (2.2.0)
     minitest (5.10.2)
-    mustache (1.0.5)
     nio4r (2.1.0)
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)

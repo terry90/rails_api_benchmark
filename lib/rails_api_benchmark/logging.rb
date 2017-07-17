@@ -1,11 +1,11 @@
 module RailsApiBenchmark
   module Logging
     class << self
+      attr_writer :logger
+
       def logger
         @logger ||= Logger.new(STDOUT)
       end
-
-      attr_writer :logger
     end
 
     def self.included(base)

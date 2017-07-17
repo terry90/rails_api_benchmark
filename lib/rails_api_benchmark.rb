@@ -3,6 +3,7 @@ require 'rails_api_benchmark/server'
 require 'rails_api_benchmark/core'
 require 'rails_api_benchmark/renderer'
 require 'rails_api_benchmark/graph'
+require 'rails_api_benchmark/result_set'
 require 'rails_api_benchmark/subprocess'
 require 'rails_api_benchmark/endpoint'
 require 'rails_api_benchmark/views/view' # Requires all the views
@@ -11,7 +12,7 @@ module RailsApiBenchmark
   class Configuration
     attr_accessor :concurrency, :nb_requests, :auth_header,
                   :server_cmd, :bench_cmd, :curl_cmd, :results_folder,
-                  :regexps, :env_vars, :routes, :host
+                  :regexps, :env_vars, :routes, :host, :summary
 
     # Default values, INSANE. Must be refactored
     # Maybe create a yaml or json file to import for default values
@@ -23,6 +24,7 @@ module RailsApiBenchmark
                   ' -H "%{auth_header}" http://%{host}%{route}'
       self.curl_cmd = 'curl -H "%{auth_header}" http://%{host}%{route}'
       self.results_folder = 'benchmark'
+      self.summary = true
       self.regexps = [
         {
           key: :response_time,
@@ -38,7 +40,7 @@ module RailsApiBenchmark
         'RAILS_MAX_THREADS' => '2',
         'RAILS_ENV' => 'production',
         'SSL_DISABLE' => 'true',
-        'SECRET_KEY_BASE' => '123',
+        'SECRET_KEY_BASE' => 'a1b2c3',
         'PORT' => '5000'
       }
       self.routes = []
