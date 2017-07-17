@@ -35,10 +35,11 @@ module RailsApiBenchmark
         }
       ]
       self.env_vars = {
-        'RAILS_MAX_THREADS' => 2,
-        'SSL_DISABLE' => true,
+        'RAILS_MAX_THREADS' => '2',
+        'RAILS_ENV' => 'production',
+        'SSL_DISABLE' => 'true',
         'SECRET_KEY_BASE' => '123',
-        'PORT' => 5000
+        'PORT' => '5000'
       }
       self.routes = []
       self.host = 'localhost:5000'
