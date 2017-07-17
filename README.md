@@ -108,7 +108,6 @@ Contributions are welcome
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
 
 ### TODO
-* Summary file (.md), to show response time for each endpoint and compare with others to track the slowest
 * POST requests handling
 * Add simplecov to permit controller coverage for example
 * Document configuration template file
