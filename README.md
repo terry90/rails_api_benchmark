@@ -27,7 +27,8 @@ Example output:
   "bench_cmd": "ab -n %{nb_requests} -c %{concurrency} -g plot.tsv -H \"%{auth_header}\" http://%{host}%{route}",
   "server_cmd": "bundle exec puma",
   "env_vars": {
-    "RAILS_MAX_THREADS": "2"
+    "RAILS_MAX_THREADS": "2",
+    "RAILS_ENV": "production"
   },
   "regexps": [
     {
