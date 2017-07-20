@@ -101,6 +101,17 @@ You can now run:
 rails api:benchmark
 ```
 
+## Screenshots
+
+### The README is the benchmark index, the page you’ll see in benchmark/ folder. It lists all the routes configured to be benchmarked:
+![Benchmark Index](http://imgur.com/S05CSs3.png)
+
+### Results are listed in a summary table to allow fast-spotting of slowdowns:
+![Benchmark Summary](http://imgur.com/le1ULaB.png)
+
+### Result page for a single route with gnuplot:
+![Benchmark Results](http://imgur.com/z3RcSwO.png)
+
 ## Contributing
 Contributions are welcome
 
