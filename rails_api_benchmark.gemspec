@@ -1,4 +1,4 @@
-$LOAD_PATH.push File.expand_path('../lib', __FILE__)
+$LOAD_PATH.push File.expand_path('lib', __dir__)
 
 # Maintain your gem's version:
 require 'rails_api_benchmark/version'
@@ -16,6 +16,7 @@ Gem::Specification.new do |s|
 
   s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md', 'gnuplotscript']
 
-  s.add_dependency 'rails', '~> 5.1.2'
   s.add_dependency 'erubis'
+  s.add_dependency 'mustache', '~> 1.0'
+  s.add_dependency 'rails', '~> 5.1.2'
 end

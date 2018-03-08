@@ -11,7 +11,7 @@ module RailsApiBenchmark
     end
 
     def run
-      gnuplotscript = File.expand_path('../../../gnuplotscript', __FILE__)
+      gnuplotscript = File.expand_path('../../gnuplotscript', __dir__)
       `gnuplot -e "plot_title='Benchmark #{@target.title}'; plot_file='#{@target.name}_plot.jpg'" #{gnuplotscript}`
     end
 

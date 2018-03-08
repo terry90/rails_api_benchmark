@@ -5,7 +5,7 @@ module RailsApiBenchmark
     class View
       def initialize(*_args)
         @config = RailsApiBenchmark.config
-        @template_path = File.expand_path('../../templates', __FILE__)
+        @template_path = File.expand_path('../templates', __dir__)
       end
 
       # Override this method in your view
